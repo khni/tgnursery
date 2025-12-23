@@ -35,6 +35,10 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Avuny',
+          value: 'avuny',
+        },
       ],
       required: true,
     },
