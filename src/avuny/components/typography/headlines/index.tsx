@@ -30,7 +30,11 @@ export function Headline({ headline, className = '' }: HeadlineProps) {
       )
     }
     case 'colourfulText': {
-      return <ColourfulText words={text} />
+      return (
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-center relative z-2 font-sans">
+          <ColourfulText words={text} />
+        </h1>
+      )
     }
 
     default:

@@ -35,7 +35,7 @@ export default function HeroPrimary({
     <section id="hero">
       <BackgroundWrapper backgroundEffect={backgroundEffect}>
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row gap-10">
-          {/* -------- Text Section -------- */}ø
+          {/* -------- Text Section -------- */}
           <motion.div
             className="flex-1 text-center md:text-left"
             initial={{ opacity: 0, x: -20 }}
