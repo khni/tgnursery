@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite'
 
-import { ThemeColor } from '@/avuny/components/types'
+import { ThemeColor } from '@/avuny/types'
 import { DefaultHeadline } from '@/avuny/components/typography/headlines/DefaultHeadline'
 
 const meta: Meta<typeof DefaultHeadline> = {

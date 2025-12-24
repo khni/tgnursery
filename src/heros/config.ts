@@ -8,8 +8,13 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { linkGroup } from '@/fields/linkGroup'
+import { headlineField } from '@/avuny/payload/fields/headline/HeadlineField'
+import { subHeadlineField } from '@/avuny/payload/fields/subheadline /SubHeadlineField'
+import { cardEffectOptions } from '@/avuny/options/cardEffectOptions'
+import { backgroundEffectOptions } from '@/avuny/options/backgroundEffectOptions'
 
 export const hero: Field = {
+  interfaceName: 'HeroField',
   name: 'hero',
   type: 'group',
   fields: [
@@ -41,6 +46,27 @@ export const hero: Field = {
         },
       ],
       required: true,
+    },
+    headlineField,
+    subHeadlineField,
+    {
+      name: 'heroImageType',
+      type: 'select',
+      defaultValue: 'none',
+      label: 'Hero Image Type',
+      options: cardEffectOptions,
+    },
+    {
+      name: 'backgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
+      name: 'BackgroundEffect',
+      type: 'select',
+      defaultValue: 'none',
+      label: 'Background Effect',
+      options: backgroundEffectOptions,
     },
     {
       name: 'richText',
