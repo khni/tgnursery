@@ -21,6 +21,21 @@ export const Users: CollectionConfig = {
       name: 'name',
       type: 'text',
     },
+    {
+      name: 'role',
+      type: 'select',
+      // required: true,
+      defaultValue: 'user',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'Developer', value: 'developer' },
+        { label: 'Editor', value: 'editor' },
+        { label: 'User', value: 'user' },
+      ],
+      admin: {
+        position: 'sidebar',
+      },
+    },
   ],
   timestamps: true,
 }

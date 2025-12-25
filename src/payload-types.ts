@@ -127,10 +127,12 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'site-general': SiteGeneral;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'site-general': SiteGeneralSelect<false> | SiteGeneralSelect<true>;
   };
   locale: null;
   user: User & {
@@ -463,6 +465,7 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  role?: ('admin' | 'developer' | 'editor' | 'user') | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1422,6 +1425,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1774,6 +1778,54 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-general".
+ */
+export interface SiteGeneral {
+  id: number;
+  primaryContact?: {
+    emails?:
+      | {
+          email: string;
+          id?: string | null;
+        }[]
+      | null;
+    phones?:
+      | {
+          phone: string;
+          id?: string | null;
+        }[]
+      | null;
+    addresses?:
+      | {
+          address: string;
+          id?: string | null;
+        }[]
+      | null;
+    socials?:
+      | {
+          name: string;
+          url: string;
+          type: 'facebook' | 'twitter' | 'linkedin' | 'instagram' | 'youtube';
+          id?: string | null;
+        }[]
+      | null;
+  };
+  branding?: {
+    logo?: (number | null) | Media;
+  };
+  footer: {
+    headline: string;
+    subheadline: string;
+    companyName: string;
+    creditType: 'developed' | 'designed-developed';
+    developerName: string;
+    developerUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1813,6 +1865,60 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-general_select".
+ */
+export interface SiteGeneralSelect<T extends boolean = true> {
+  primaryContact?:
+    | T
+    | {
+        emails?:
+          | T
+          | {
+              email?: T;
+              id?: T;
+            };
+        phones?:
+          | T
+          | {
+              phone?: T;
+              id?: T;
+            };
+        addresses?:
+          | T
+          | {
+              address?: T;
+              id?: T;
+            };
+        socials?:
+          | T
+          | {
+              name?: T;
+              url?: T;
+              type?: T;
+              id?: T;
+            };
+      };
+  branding?:
+    | T
+    | {
+        logo?: T;
+      };
+  footer?:
+    | T
+    | {
+        headline?: T;
+        subheadline?: T;
+        companyName?: T;
+        creditType?: T;
+        developerName?: T;
+        developerUrl?: T;
       };
   updatedAt?: T;
   createdAt?: T;
