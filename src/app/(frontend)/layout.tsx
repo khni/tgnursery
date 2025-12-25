@@ -15,9 +15,14 @@ import { draftMode } from 'next/headers'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
-
+import MainLayout from '@/avuny/components/layout'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+import { navItems } from '@/avuny/features/navItems'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
+  const payload = await getPayload({ config })
+  const { footer, branding, primaryContact } = await payload.findGlobal({ slug: 'site-general' })
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -28,15 +33,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <Providers>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
+          <MainLayout
+            branding={branding}
+            footer={footer}
+            primaryContact={primaryContact}
+            navItems={navItems}
+          >
+            <AdminBar
+              adminBarProps={{
+                preview: isEnabled,
+              }}
+            />
 
-          {/* <Header /> */}
-          {children}
-          <Footer />
+            {/* <Header /> */}
+            {children}
+          </MainLayout>
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
