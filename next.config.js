@@ -10,14 +10,24 @@ const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 const nextConfig = {
   images: {
     remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
+      // Allow Cloudinary
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
 
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', ''),
-        }
-      }),
+      // Allow your own app domain (optional, but fine to keep)
+      ...(NEXT_PUBLIC_SERVER_URL
+        ? [
+            (() => {
+              const url = new URL(NEXT_PUBLIC_SERVER_URL)
+              return {
+                protocol: url.protocol.replace(':', ''),
+                hostname: url.hostname,
+              }
+            })(),
+          ]
+        : []),
     ],
   },
   webpack: (webpackConfig) => {

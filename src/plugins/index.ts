@@ -13,6 +13,9 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
+import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
+import { cloudinaryAdapter, cloudinaryConfig } from '@/plugins/cloudinary'
+
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
 }
@@ -86,6 +89,20 @@ export const plugins: Plugin[] = [
     searchOverrides: {
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
+      },
+    },
+  }),
+
+  cloudStoragePlugin({
+    collections: {
+      media: {
+        adapter: cloudinaryAdapter,
+        disableLocalStorage: true,
+        generateFileURL: ({ filename }) => {
+          // Since we uploaded the file with a "media/" prefix in its public_id,
+          // we include "media/" here to correctly generate the Cloudinary URL for the file.
+          return cloudinaryConfig.url(`media/${filename}`, { secure: true })
+        },
       },
     },
   }),

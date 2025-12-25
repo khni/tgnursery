@@ -12,6 +12,10 @@ export const renderHeroImage = ({
   if (!imageUrl) return null
 
   if (cardEffect === 'CometCard') {
+    if (!imageUrl) {
+      return null
+    }
+
     return (
       <CometCard>
         <Image

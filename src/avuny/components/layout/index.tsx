@@ -24,15 +24,13 @@ export default function MainLayout({
   footer,
   primaryContact,
 }: MainLayoutProps) {
-  const NavbarLogo = () => (
-    <Image
-      src={getPayloadMediaUrl(branding?.logo) || ''}
-      alt="Logo"
-      width={60}
-      height={30}
-      priority
-    />
-  )
+  const NavbarLogo = () => {
+    const src = getPayloadMediaUrl(branding?.logo)
+    if (!src) {
+      return null
+    }
+    return <Image src={src} alt="Logo" width={60} height={30} priority />
+  }
 
   return (
     <StickyNavbarReanimate
