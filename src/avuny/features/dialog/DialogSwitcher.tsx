@@ -2,6 +2,7 @@
 
 import { Page } from '@/payload-types'
 import { DialogId } from './DialogId'
+import { BookTourDialog } from '@/avuny/features/forms/BookTour'
 
 type Props = {
   label: string
@@ -11,8 +12,7 @@ type Props = {
 export const DialogSwitcher = ({ label, dialog }: Props) => {
   switch (dialog) {
     case 'book-tour':
-      return <p>BookTourDialog</p>
-    // return <BookTourDialog />
+      return <BookTourDialog />
 
     case 'contact-form':
       return <button>{label} – Contact Form Dialog</button>

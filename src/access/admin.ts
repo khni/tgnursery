@@ -5,5 +5,5 @@ import type { User } from '@/payload-types'
 type isAuthenticated = (args: AccessArgs<User>) => boolean
 
 export const admin: isAuthenticated = ({ req: { user } }) => {
-  return Boolean(user?.role === 'admin')
+  return Boolean(user?.role === 'admin' || user?.role === 'developer')
 }

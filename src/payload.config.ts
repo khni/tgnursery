@@ -15,6 +15,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { SiteGeneral } from '@/avuny/payload/globals/general/config'
+import { Contacts } from '@/collections/Collections/Config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -67,7 +68,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Media, Categories, Users, Contacts],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, SiteGeneral],
   plugins,
