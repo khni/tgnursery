@@ -38,6 +38,7 @@ export const RenderHero: React.FC<Page['hero']> = (props) => {
         backgroundImageUrl={getPayloadMediaUrl(props.backgroundImage) || ''}
         heroImageUrl={getPayloadMediaUrl(props.backgroundImage) || ''}
         heroImageEffect={props.heroImageType || 'none'}
+        ctas={props.ctas || []}
       />
     )
   }

@@ -22,6 +22,19 @@ export type ColorsField =
     }[]
   | null;
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Cta".
+ */
+export type Cta =
+  | {
+      label: string;
+      action: 'link' | 'dialog';
+      href?: string | null;
+      dialog?: ('book-tour' | 'contact-form') | null;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -209,6 +222,7 @@ export interface HeroField {
     };
   };
   subHeadline?: SubHeadlineField;
+  ctas?: Cta;
   heroImageType?: ('none' | 'CometCard' | 'pixelatedCanvas') | null;
   backgroundImage?: (number | null) | Media;
   BackgroundEffect?: ('none' | 'beamsWithCollision') | null;
@@ -1115,6 +1129,7 @@ export interface HeroFieldSelect<T extends boolean = true> {
             };
       };
   subHeadline?: T | SubHeadlineFieldSelect<T>;
+  ctas?: T | CtaSelect<T>;
   heroImageType?: T;
   backgroundImage?: T;
   BackgroundEffect?: T;
@@ -1157,6 +1172,17 @@ export interface SubHeadlineFieldSelect<T extends boolean = true> {
         size?: T;
         colors?: T | ColorsFieldSelect<T>;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Cta_select".
+ */
+export interface CtaSelect<T extends boolean = true> {
+  label?: T;
+  action?: T;
+  href?: T;
+  dialog?: T;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

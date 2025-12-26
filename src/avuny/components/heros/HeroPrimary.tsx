@@ -4,10 +4,13 @@ import { BackgroundWrapper } from '@/avuny/components/BackgroundWrapper'
 import { renderHeroImage } from '@/avuny/components/RenderCardWithImage'
 import { Headline } from '@/avuny/components/typography/headlines'
 import { subHeadlineComponentMap } from '@/avuny/components/typography/subheadlines'
+import { CtasRenderer } from '@/avuny/cta/CtasRerender'
+import { DialogSwitcher } from '@/avuny/features/dialog/DialogSwitcher'
 import { Color, HeadlineProps, HeadlineVariant, Size } from '@/avuny/types'
 import { BackgroundEffect } from '@/avuny/types/BackgroundEffect'
 import { CardEffect } from '@/avuny/types/CardEffect'
 import { SubHeadlineVariant } from '@/avuny/types/SubHeadlineVariant'
+import { Cta } from '@/payload-types'
 
 // import { BookTourDialog } from '@/sections/Home/BookTour'
 
@@ -21,6 +24,7 @@ type HeroProps = {
   heroImageUrl?: string
   backgroundEffect?: BackgroundEffect
   backgroundImageUrl?: string
+  ctas: Cta
 }
 
 export default function HeroPrimary({
@@ -29,6 +33,7 @@ export default function HeroPrimary({
   subHeadline,
   heroImageEffect,
   heroImageUrl,
+  ctas,
 }: HeroProps) {
   const SubHeadline = subHeadlineComponentMap[subHeadline?.variant || 'primary']
   return (
@@ -52,9 +57,9 @@ export default function HeroPrimary({
 
             <SubHeadline text={subHeadline?.text || ''} color={subHeadline?.colors[0]} />
 
-            {/* <div className="mt-4 flex justify-center items-center w-full gap-4">
-              <CtasRenderer ctas={hero.ctas} CtaSwitcher={CtaSwitcher} />
-            </div> */}
+            <div className="mt-4 flex justify-center items-center w-full gap-4">
+              <CtasRenderer ctas={ctas} DialogSwitcher={DialogSwitcher} />
+            </div>
           </motion.div>
           {/* -------- Image Section -------- */}
           <motion.div

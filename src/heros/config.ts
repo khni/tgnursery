@@ -12,6 +12,7 @@ import { headlineField } from '@/avuny/payload/fields/headline/HeadlineField'
 import { subHeadlineField } from '@/avuny/payload/fields/subheadline /SubHeadlineField'
 import { cardEffectOptions } from '@/avuny/options/cardEffectOptions'
 import { backgroundEffectOptions } from '@/avuny/options/backgroundEffectOptions'
+import { ctaField } from '@/avuny/cta/CtaField'
 
 export const hero: Field = {
   interfaceName: 'HeroField',
@@ -49,6 +50,7 @@ export const hero: Field = {
     },
     headlineField,
     subHeadlineField,
+    ctaField,
     {
       name: 'heroImageType',
       type: 'select',
