@@ -289,7 +289,7 @@ export interface SubHeadlineField {
  */
 export interface Dialog {
   id: number;
-  dialogId?: ('book-tour' | 'contact-form') | null;
+  dialogId?: ('tour' | 'summer-camp' | 'winter-camp' | 'after-school' | 'contact-us') | null;
   title?: string | null;
   description?: string | null;
   updatedAt: string;

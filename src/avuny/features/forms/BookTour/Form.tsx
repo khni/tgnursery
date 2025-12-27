@@ -3,11 +3,19 @@ import { bookTourAction } from '@/avuny/features/forms/BookTour/actions/bookTour
 import { ContactOption } from '@/avuny/features/forms/BookTour/ContactType'
 import { bookTourSchema } from '@/avuny/features/forms/BookTour/Schema'
 
-export function BookTourForm({ option }: { option: ContactOption }) {
+export function BookTourForm({
+  option,
+  title,
+  description,
+}: {
+  option: ContactOption
+  title: string
+  description: string
+}) {
   return (
     <FormCard
-      title="Book a Tour"
-      description="Fill out the form to book your tour."
+      title={title}
+      description={description}
       schema={bookTourSchema}
       submitLabel="Book Tour"
       action={(values) => bookTourAction(values, option)} // ✅ server action reference

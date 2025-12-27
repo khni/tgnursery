@@ -1,11 +1,3 @@
-import { DialogId } from './DialogId'
+import { contactOptions } from '@/avuny/features/forms/BookTour/contactOptions'
 
-export interface DialogOption {
-  label: string
-  value: DialogId
-}
-
-export const dialogOptions: DialogOption[] = [
-  { label: 'Book Tour', value: 'book-tour' },
-  { label: 'Contact Form', value: 'contact-form' },
-]
+export const dialogOptions = [...contactOptions]

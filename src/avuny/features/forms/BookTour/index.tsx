@@ -7,7 +7,15 @@ import { AnimatedSwitch } from '@/avuny/components/AnimatedSwitch'
 import { BookTourForm } from '@/avuny/features/forms/BookTour/Form'
 import { ContactOption } from '@/avuny/features/forms/BookTour/ContactType'
 
-export function BookTourDialog({ option }: { option: ContactOption }) {
+export function BookTourDialog({
+  option,
+  title,
+  description,
+}: {
+  option: ContactOption
+  title: string
+  description: string
+}) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -17,12 +25,12 @@ export function BookTourDialog({ option }: { option: ContactOption }) {
       contentClassName="sm:max-w-[425px]"
       trigger={
         <Button className="bg-orange-300 hover:bg-sky-800 text-white rounded-full px-6 py-3">
-          Book a Tour
+          {title}
         </Button>
       }
     >
       {/* <AnimatedSwitch show={true} first={<BookTourForm />} second={null} /> */}
-      <BookTourForm option={option} />
+      <BookTourForm title={title} description={description} option={option} />
     </BaseDialog>
   )
 }

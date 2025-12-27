@@ -15,7 +15,7 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import { SiteGeneral } from '@/avuny/payload/globals/general/config'
-import { Contacts } from '@/collections/Collections/Config'
+import { Contacts } from '@/collections/Contacts/Config'
 import { Dialogs } from '@/collections/Dialog/Config'
 
 const filename = fileURLToPath(import.meta.url)

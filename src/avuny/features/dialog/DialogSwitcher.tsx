@@ -16,7 +16,13 @@ export const DialogSwitcher = ({ label, dialog }: Props) => {
     return <div>6</div>
   }
 
-  return <BookTourDialog option={_dialog.dialogId} />
+  return (
+    <BookTourDialog
+      option={_dialog.dialogId}
+      title={_dialog.title || ''}
+      description={_dialog.description || ''}
+    />
+  )
   // switch (_dialog.dialogId) {
   //   case 'book-tour':
   //     return <BookTourDialog />
