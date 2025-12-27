@@ -47,7 +47,7 @@ export const ctaField: Field = {
       relationTo: 'dialogs',
       admin: {
         condition: (_, siblingData) => siblingData.action === 'dialog',
-        // hidden: !developer,
+        //hidden: !developer,
       },
     },
   ],

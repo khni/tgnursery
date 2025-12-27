@@ -3,8 +3,8 @@
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { bookTourSchema } from '@/avuny/features/forms/BookTour/Schema'
-
-export async function bookTourAction(values: unknown) {
+import { ContactOption } from '@/avuny/features/forms/BookTour/ContactType'
+export async function bookTourAction(values: unknown, options: ContactOption) {
   const parsed = bookTourSchema.safeParse(values)
 
   if (!parsed.success) {
@@ -21,7 +21,7 @@ export async function bookTourAction(values: unknown) {
     data: {
       name: parsed.data.name,
       mobile: parsed.data.mobile,
-      options: 'tour',
+      options,
     },
   })
 

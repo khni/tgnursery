@@ -12,17 +12,19 @@ type Props = {
 
 export const DialogSwitcher = ({ label, dialog }: Props) => {
   const _dialog = getPayloadDialog(dialog)
-  if (!_dialog) {
-    return <div></div>
+  if (!_dialog || !_dialog.dialogId) {
+    return <div>6</div>
   }
-  switch (_dialog.dialogId) {
-    case 'book-tour':
-      return <BookTourDialog />
 
-    case 'contact-form':
-      return <button>{label} – Contact Form Dialog</button>
+  return <BookTourDialog option={_dialog.dialogId} />
+  // switch (_dialog.dialogId) {
+  //   case 'book-tour':
+  //     return <BookTourDialog />
 
-    default:
-      return null
-  }
+  //   case 'contact-form':
+  //     return <button>{label} – Contact Form Dialog</button>
+
+  //   default:
+  //     return null
+  // }
 }

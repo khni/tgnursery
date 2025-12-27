@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button'
 import { BaseDialog } from '@/avuny/components/BaseDialog'
 import { AnimatedSwitch } from '@/avuny/components/AnimatedSwitch'
 import { BookTourForm } from '@/avuny/features/forms/BookTour/Form'
+import { ContactOption } from '@/avuny/features/forms/BookTour/ContactType'
 
-export function BookTourDialog() {
+export function BookTourDialog({ option }: { option: ContactOption }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -21,7 +22,7 @@ export function BookTourDialog() {
       }
     >
       {/* <AnimatedSwitch show={true} first={<BookTourForm />} second={null} /> */}
-      <BookTourForm />
+      <BookTourForm option={option} />
     </BaseDialog>
   )
 }
