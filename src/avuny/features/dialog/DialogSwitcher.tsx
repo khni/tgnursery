@@ -3,6 +3,7 @@
 import { Page } from '@/payload-types'
 import { DialogId } from './DialogId'
 import { BookTourDialog } from '@/avuny/features/forms/BookTour'
+import { getPayloadDialog } from '@/avuny/utils'
 
 type Props = {
   label: string
@@ -10,7 +11,11 @@ type Props = {
 }
 
 export const DialogSwitcher = ({ label, dialog }: Props) => {
-  switch (dialog) {
+  const _dialog = getPayloadDialog(dialog)
+  if (!_dialog) {
+    return <div></div>
+  }
+  switch (_dialog.dialogId) {
     case 'book-tour':
       return <BookTourDialog />
 

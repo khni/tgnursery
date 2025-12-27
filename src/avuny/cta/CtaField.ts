@@ -43,11 +43,11 @@ export const ctaField: Field = {
 
     {
       name: 'dialog',
-      type: 'select',
-      options: dialogOptions,
+      type: 'relationship',
+      relationTo: 'dialogs',
       admin: {
         condition: (_, siblingData) => siblingData.action === 'dialog',
-        hidden: !developer,
+        // hidden: !developer,
       },
     },
   ],

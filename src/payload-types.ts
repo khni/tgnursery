@@ -30,7 +30,7 @@ export type Cta =
       label: string;
       action: 'link' | 'dialog';
       href?: string | null;
-      dialog?: ('book-tour' | 'contact-form') | null;
+      dialog?: (number | null) | Dialog;
       id?: string | null;
     }[]
   | null;
@@ -101,6 +101,7 @@ export interface Config {
     categories: Category;
     users: User;
     contacts: Contact;
+    dialogs: Dialog;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -124,6 +125,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
+    dialogs: DialogsSelect<false> | DialogsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -280,6 +282,18 @@ export interface SubHeadlineField {
     size?: SizeField;
     colors?: ColorsField;
   };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dialogs".
+ */
+export interface Dialog {
+  id: number;
+  dialogId?: ('book-tour' | 'contact-form') | null;
+  title?: string | null;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1038,6 +1052,10 @@ export interface PayloadLockedDocument {
         value: number | Contact;
       } | null)
     | ({
+        relationTo: 'dialogs';
+        value: number | Dialog;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1425,6 +1443,17 @@ export interface ContactsSelect<T extends boolean = true> {
   email?: T;
   mobile?: T;
   options?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dialogs_select".
+ */
+export interface DialogsSelect<T extends boolean = true> {
+  dialogId?: T;
+  title?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }
