@@ -192,7 +192,49 @@ export interface Page {
   id: number;
   title: string;
   hero: HeroField;
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | {
+        name?: string | null;
+        /**
+         * When enabled, the slug will auto-generate from the title field on save and autosave.
+         */
+        generateSlug?: boolean | null;
+        slug: string;
+        headline?: string | null;
+        subheadline?: string | null;
+        alignment?: ('left' | 'center') | null;
+        cards: {
+          title: string;
+          description: string;
+          emoji: '👶' | '🧸' | '🎨' | '📘' | '🏫' | '⭐' | '🚀';
+          color:
+            | 'from-pink-400 via-pink-500 to-pink-600'
+            | 'from-orange-400 via-orange-500 to-orange-600'
+            | 'from-yellow-400 via-yellow-500 to-yellow-600'
+            | 'from-green-400 via-green-500 to-green-600'
+            | 'from-sky-400 via-blue-500 to-blue-600'
+            | 'from-purple-400 via-purple-500 to-purple-600';
+          sparkleColor:
+            | 'rgba(244, 114, 182, 0.9)'
+            | 'rgba(251, 146, 60, 0.9)'
+            | 'rgba(250, 204, 21, 0.9)'
+            | 'rgba(74, 222, 128, 0.9)'
+            | 'rgba(56, 189, 248, 0.9)'
+            | 'rgba(168, 85, 247, 0.9)';
+          variant?: ('default' | 'outlined' | 'glass') | null;
+          featured?: boolean | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'colourfulCards';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -1132,6 +1174,30 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        colourfulCards?:
+          | T
+          | {
+              name?: T;
+              generateSlug?: T;
+              slug?: T;
+              headline?: T;
+              subheadline?: T;
+              alignment?: T;
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    emoji?: T;
+                    color?: T;
+                    sparkleColor?: T;
+                    variant?: T;
+                    featured?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
