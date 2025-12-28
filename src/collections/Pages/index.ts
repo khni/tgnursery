@@ -23,6 +23,7 @@ import {
 import { ColourfulCards } from '@/avuny/blocks/Cards/config'
 import { ImageCard } from '@/avuny/blocks/ImageCard/config'
 import { MediaGallery } from '@/avuny/blocks/MediaGallery/config'
+import { developer } from '@/access/developer'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -62,6 +63,25 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'title',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'navOrder',
+      type: 'number',
+      label: 'Navigation Order',
+      admin: {
+        description: 'Lower numbers appear first in the navbar',
+        hidden: !developer,
+      },
+    },
+
+    {
+      name: 'showInNav',
+      type: 'checkbox',
+      admin: {
+        description: 'check it to be rendered in navbar',
+        hidden: !developer,
+      },
+      defaultValue: false,
     },
     {
       type: 'tabs',

@@ -191,6 +191,14 @@ export interface UserAuthOperations {
 export interface Page {
   id: number;
   title: string;
+  /**
+   * Lower numbers appear first in the navbar
+   */
+  navOrder?: number | null;
+  /**
+   * check it to be rendered in navbar
+   */
+  showInNav?: boolean | null;
   hero: HeroField;
   layout: (
     | CallToActionBlock
@@ -1216,6 +1224,8 @@ export interface PayloadMigration {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  navOrder?: T;
+  showInNav?: T;
   hero?: T | HeroFieldSelect<T>;
   layout?:
     | T
