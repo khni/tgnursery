@@ -4,11 +4,14 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { Lens } from '../ui/lens'
 import { cn } from '@/utilities/ui'
+import { AnimatedItems } from '@/components/AnimatedItems'
+import { Separator } from '@/components/ui/separator'
 
 type Card = {
   title: string
   description: string
   imageUrl?: string
+  features?: string[]
 }
 
 type LensDemoProps = {
@@ -26,7 +29,7 @@ export function LensCard({ cards }: LensDemoProps) {
         return (
           <div
             key={index}
-            className="w-full relative rounded-3xl overflow-hidden max-w-md bg-gradient-to-r from-[#1D2235] to-[#121318] p-8 my-10"
+            className="w-full relative rounded-3xl overflow-hidden max-w-md  p-8 my-10 border border-slate-200 dark:border-slate-700 bg-gradient-to-br from-sky-50 via-white to-orange-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
           >
             <Rays />
             <Beams />
@@ -50,8 +53,11 @@ export function LensCard({ cards }: LensDemoProps) {
                 }}
                 className="py-4 relative z-20"
               >
-                <h2 className="text-white text-2xl font-bold">{card.title}</h2>
-                <p className="text-neutral-200 mt-4">{card.description}</p>
+                <h2 className=" text-2xl font-bold">{card.title}</h2>
+
+                <p className=" mt-4 leading-relaxed">{card.description}</p>
+                <Separator className="my-3" />
+                <AnimatedItems items={card.features} />
               </motion.div>
             </div>
           </div>

@@ -33,6 +33,10 @@ export const ImageCard: Block = {
           label: 'Lens',
           value: 'lens',
         },
+        {
+          label: 'Cover Image',
+          value: 'cover',
+        },
       ],
       defaultValue: 'lens',
     },
@@ -57,7 +61,7 @@ export const ImageCard: Block = {
         },
         {
           name: 'features',
-          type: 'group',
+          type: 'array',
           fields: [localizedTextField('name')],
         },
         {

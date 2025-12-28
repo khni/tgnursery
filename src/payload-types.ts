@@ -876,16 +876,19 @@ export interface ImageCardBlock {
    * Internal name for this block
    */
   name: string;
-  variant?: ('threeD' | 'lens') | null;
+  variant?: ('threeD' | 'lens' | 'cover') | null;
   headline?: string | null;
   subheadline?: string | null;
   ctas?: Cta;
   cards: {
     title: string;
     description?: string | null;
-    features?: {
-      name?: string | null;
-    };
+    features?:
+      | {
+          name?: string | null;
+          id?: string | null;
+        }[]
+      | null;
     image: number | Media;
     id?: string | null;
   }[];
@@ -1418,6 +1421,7 @@ export interface ImageCardBlockSelect<T extends boolean = true> {
           | T
           | {
               name?: T;
+              id?: T;
             };
         image?: T;
         id?: T;

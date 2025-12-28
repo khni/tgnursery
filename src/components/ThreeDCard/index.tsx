@@ -3,11 +3,14 @@
 import React from 'react'
 import { CardBody, CardContainer, CardItem } from '../ui/3d-card'
 import { motion } from 'motion/react'
+import { AnimatedItems } from '@/components/AnimatedItems'
+import { Separator } from '@/components/ui/separator'
 
 type CardData = {
   title: string
   description: string
   imageUrl?: string
+  features?: string[]
   primaryAction?: string
   secondaryAction?: string
 }
@@ -50,6 +53,8 @@ export function ThreeDCard({ cards }: ThreeDCardDemoProps) {
                   alt={card.title}
                 />
               </CardItem>
+              <Separator className="my-4" />
+              <AnimatedItems items={card.features} />
 
               {(card.primaryAction || card.secondaryAction) && (
                 <div className="flex justify-between items-center mt-20">

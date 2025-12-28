@@ -1,4 +1,5 @@
 import { getPayloadMediaUrl } from '@/avuny/utils'
+import CoverCards from '@/components/CoverCard'
 import { LensCard } from '@/components/LensCard'
 import { ThreeDCard } from '@/components/ThreeDCard'
 import { ImageCardBlock } from '@/payload-types'
@@ -9,6 +10,7 @@ export const ImageCard = (props: ImageCardBlock) => {
     title: card.title,
     description: card.description || '',
     imageUrl: getPayloadMediaUrl(card.image) || '',
+    features: card.features?.map((feature) => feature.name!),
   }))
 
   switch (variant) {
@@ -17,6 +19,8 @@ export const ImageCard = (props: ImageCardBlock) => {
 
     case 'lens':
       return <LensCard cards={_cards} />
+    case 'cover':
+      return <CoverCards cards={_cards} />
     default:
       return <LensCard cards={_cards} />
   }
