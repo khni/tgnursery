@@ -234,6 +234,7 @@ export interface Page {
         blockName?: string | null;
         blockType: 'colourfulCards';
       }
+    | ImageCardBlock
   )[];
   meta?: {
     title?: string | null;
@@ -868,6 +869,32 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageCardBlock".
+ */
+export interface ImageCardBlock {
+  /**
+   * Internal name for this block
+   */
+  name: string;
+  variant?: ('threeD' | 'lens') | null;
+  headline?: string | null;
+  subheadline?: string | null;
+  ctas?: Cta;
+  cards: {
+    title: string;
+    description?: string | null;
+    features?: {
+      name?: string | null;
+    };
+    image: number | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageCard';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts".
  */
 export interface Contact {
@@ -1198,6 +1225,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        imageCard?: T | ImageCardBlockSelect<T>;
       };
   meta?:
     | T
@@ -1368,6 +1396,32 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ImageCardBlock_select".
+ */
+export interface ImageCardBlockSelect<T extends boolean = true> {
+  name?: T;
+  variant?: T;
+  headline?: T;
+  subheadline?: T;
+  ctas?: T | CtaSelect<T>;
+  cards?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        features?:
+          | T
+          | {
+              name?: T;
+            };
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

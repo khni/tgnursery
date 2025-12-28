@@ -8,6 +8,7 @@ import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import AnimatedCardsSection from '@/avuny/blocks/Cards/animated-cards'
+import { ImageCard } from '@/avuny/blocks/ImageCard/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -16,6 +17,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   colourfulCards: AnimatedCardsSection,
+  imageCard: ImageCard,
 }
 
 export const RenderBlocks: React.FC<{

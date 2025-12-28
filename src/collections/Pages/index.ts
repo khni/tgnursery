@@ -21,6 +21,7 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { ColourfulCards } from '@/avuny/blocks/Cards/config'
+import { ImageCard } from '@/avuny/blocks/ImageCard/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -73,7 +74,15 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, ColourfulCards],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                ColourfulCards,
+                ImageCard,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,
