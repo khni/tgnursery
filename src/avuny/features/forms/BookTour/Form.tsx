@@ -17,7 +17,7 @@ export function BookTourForm({
       title={title}
       description={description}
       schema={bookTourSchema}
-      submitLabel="Book Tour"
+      submitLabel="Submit"
       action={(values) => bookTourAction(values, option)} // ✅ server action reference
       fields={[
         { name: 'name', label: 'Full Name' },

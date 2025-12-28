@@ -15,6 +15,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
 
       // Allow your own app domain (optional, but fine to keep)
       ...(NEXT_PUBLIC_SERVER_URL

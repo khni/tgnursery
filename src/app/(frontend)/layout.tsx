@@ -39,11 +39,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             primaryContact={primaryContact}
             navItems={navItems}
           >
-            <AdminBar
+            {/* <AdminBar
               adminBarProps={{
                 preview: isEnabled,
               }}
-            />
+            /> */}
 
             {/* <Header /> */}
             {children}

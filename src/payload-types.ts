@@ -235,6 +235,7 @@ export interface Page {
         blockType: 'colourfulCards';
       }
     | ImageCardBlock
+    | MediaGalleryBlock
   )[];
   meta?: {
     title?: string | null;
@@ -898,6 +899,26 @@ export interface ImageCardBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaGalleryBlock".
+ */
+export interface MediaGalleryBlock {
+  headline?: string | null;
+  subheadline?: string | null;
+  variant?: 'default' | null;
+  ctas?: Cta;
+  images?:
+    | {
+        image: number | Media;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaGallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts".
  */
 export interface Contact {
@@ -1229,6 +1250,7 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
         imageCard?: T | ImageCardBlockSelect<T>;
+        mediaGallery?: T | MediaGalleryBlockSelect<T>;
       };
   meta?:
     | T
@@ -1424,6 +1446,25 @@ export interface ImageCardBlockSelect<T extends boolean = true> {
               id?: T;
             };
         image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaGalleryBlock_select".
+ */
+export interface MediaGalleryBlockSelect<T extends boolean = true> {
+  headline?: T;
+  subheadline?: T;
+  variant?: T;
+  ctas?: T | CtaSelect<T>;
+  images?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
         id?: T;
       };
   id?: T;

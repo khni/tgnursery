@@ -22,6 +22,7 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { ColourfulCards } from '@/avuny/blocks/Cards/config'
 import { ImageCard } from '@/avuny/blocks/ImageCard/config'
+import { MediaGallery } from '@/avuny/blocks/MediaGallery/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -82,6 +83,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 FormBlock,
                 ColourfulCards,
                 ImageCard,
+                MediaGallery,
               ],
               required: true,
               admin: {
