@@ -9,6 +9,12 @@ export const Dialogs: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  access: {
+    read: () => true,
+    create: developer,
+    update: developer,
+    delete: developer,
+  },
   fields: [
     {
       name: 'dialogId',
