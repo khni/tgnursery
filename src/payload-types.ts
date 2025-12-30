@@ -885,7 +885,11 @@ export interface ImageCardBlock {
    * Internal name for this block
    */
   name: string;
-  variant?: ('threeD' | 'lens' | 'cover') | null;
+  /**
+   * unique slug used for section id
+   */
+  slug?: string | null;
+  variant?: ('threeD' | 'lens' | 'cover' | 'responsive') | null;
   headline?: string | null;
   subheadline?: string | null;
   ctas?: Cta;
@@ -912,6 +916,10 @@ export interface ImageCardBlock {
 export interface MediaGalleryBlock {
   headline?: string | null;
   subheadline?: string | null;
+  /**
+   * unique slug used for section id
+   */
+  slug?: string | null;
   variant?: 'default' | null;
   ctas?: Cta;
   images?:
@@ -1440,6 +1448,7 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface ImageCardBlockSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   variant?: T;
   headline?: T;
   subheadline?: T;
@@ -1468,6 +1477,7 @@ export interface ImageCardBlockSelect<T extends boolean = true> {
 export interface MediaGalleryBlockSelect<T extends boolean = true> {
   headline?: T;
   subheadline?: T;
+  slug?: T;
   variant?: T;
   ctas?: T | CtaSelect<T>;
   images?:

@@ -25,6 +25,14 @@ export const MediaGallery: Block = {
       required: false,
     },
     {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      admin: {
+        description: 'unique slug used for section id',
+      },
+    },
+    {
       name: 'variant',
       type: 'select',
       options: [

@@ -37,13 +37,17 @@ export const RenderBlocks: React.FC<{
 
           if (blockType && blockType in blockComponents) {
             const Block = blockComponents[blockType]
+            let slug
+            if ('slug' in block) {
+              slug = block.slug || index.toString()
+            }
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <section id={slug} className="my-16" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
-                </div>
+                </section>
               )
             }
           }

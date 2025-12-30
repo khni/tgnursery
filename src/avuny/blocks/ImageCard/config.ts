@@ -22,6 +22,15 @@ export const ImageCard: Block = {
       },
     },
     {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      admin: {
+        description: 'unique slug used for section id',
+      },
+    },
+
+    {
       name: 'variant',
       type: 'select',
       options: [
@@ -36,6 +45,10 @@ export const ImageCard: Block = {
         {
           label: 'Cover Image',
           value: 'cover',
+        },
+        {
+          label: 'Responsive',
+          value: 'responsive',
         },
       ],
       defaultValue: 'lens',
