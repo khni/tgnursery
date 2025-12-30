@@ -57,7 +57,7 @@ export default function HeroPrimary({
 
             <SubHeadline text={subHeadline?.text || ''} color={subHeadline?.colors[0]} />
 
-            <div className="mt-4 flex justify-center items-center w-full gap-4">
+            <div className="mt-4 flex justify-center flex-wrap items-center w-full gap-4">
               <CtasRenderer ctas={ctas} DialogSwitcher={DialogSwitcher} />
             </div>
           </motion.div>

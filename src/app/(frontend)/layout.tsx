@@ -58,9 +58,34 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
+  title: 'TG Nursery – Summer & Winter Camps in Mohandseen',
+  description:
+    'Join TG Nursery in Mohandseen for enriching Summer and Winter camps. Fun activities, learning, and skill development for your child.',
+  openGraph: {
+    title: 'TG Nursery – Summer & Winter Camps in Mohandseen',
+    description:
+      'Enroll your child in Topo Gigio Nursery camps. Fun, learning, and creativity for every child in Mohandseen.',
+    url: getServerSideURL(),
+    type: 'website',
+    // images: [
+    //   {
+    //     url: `${getServerSideURL()}/og-image.jpg`,
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "TG Nursery "
+    //   }
+    // ],
+  },
+  // twitter: {
+  //   card: 'summary_large_image',
+  //   title: "Topo Gigio Nursery – Summer & Winter Camps in Mohandseen",
+  //   description: "Enroll your child in Topo Gigio Nursery camps. Fun, learning, and creativity for every child in Mohandseen.",
+  //   creator: '@TopoGigioNursery', // your Twitter handle
+  //   images: [`${getServerSideURL()}/og-image.jpg`],
+  // },
+  icons: {
+    icon: '/favicon.ico', // standard favicon
+    // shortcut: '/favicon-16x16.png', // optional smaller shortcut icon
+    // apple: '/apple-touch-icon.png'   // optional Apple touch icon
   },
 }

@@ -21,7 +21,7 @@ export const CtasRenderer = ({ ctas, className, DialogSwitcher }: Props) => {
   if (!ctas?.length) return null
 
   return (
-    <div className="flex gap-4">
+    <div className="flex justify-center flex-wrap gap-4">
       {ctas.map((cta) => (
         <CtaRenderer
           key={cta.id ?? `${cta.label}-${cta.action}`}
