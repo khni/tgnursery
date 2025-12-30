@@ -214,6 +214,10 @@ export interface Page {
         generateSlug?: boolean | null;
         slug: string;
         headline?: string | null;
+        /**
+         * check it to be rendered in navbar
+         */
+        showInNav?: boolean | null;
         subheadline?: string | null;
         alignment?: ('left' | 'center') | null;
         cards: {
@@ -889,6 +893,10 @@ export interface ImageCardBlock {
    * unique slug used for section id
    */
   slug?: string | null;
+  /**
+   * check it to be rendered in navbar
+   */
+  showInNav?: boolean | null;
   variant?: ('threeD' | 'lens' | 'cover' | 'responsive') | null;
   headline?: string | null;
   subheadline?: string | null;
@@ -920,6 +928,10 @@ export interface MediaGalleryBlock {
    * unique slug used for section id
    */
   slug?: string | null;
+  /**
+   * check it to be rendered in navbar
+   */
+  showInNav?: boolean | null;
   variant?: 'default' | null;
   ctas?: Cta;
   images?:
@@ -1250,6 +1262,7 @@ export interface PagesSelect<T extends boolean = true> {
               generateSlug?: T;
               slug?: T;
               headline?: T;
+              showInNav?: T;
               subheadline?: T;
               alignment?: T;
               cards?:
@@ -1449,6 +1462,7 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface ImageCardBlockSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
+  showInNav?: T;
   variant?: T;
   headline?: T;
   subheadline?: T;
@@ -1478,6 +1492,7 @@ export interface MediaGalleryBlockSelect<T extends boolean = true> {
   headline?: T;
   subheadline?: T;
   slug?: T;
+  showInNav?: T;
   variant?: T;
   ctas?: T | CtaSelect<T>;
   images?:

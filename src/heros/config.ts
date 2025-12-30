@@ -13,6 +13,7 @@ import { subHeadlineField } from '@/avuny/payload/fields/subheadline /SubHeadlin
 import { cardEffectOptions } from '@/avuny/options/cardEffectOptions'
 import { backgroundEffectOptions } from '@/avuny/options/backgroundEffectOptions'
 import { ctaField } from '@/avuny/cta/CtaField'
+import { developer } from '@/access/developer'
 
 export const hero: Field = {
   interfaceName: 'HeroField',
@@ -46,6 +47,9 @@ export const hero: Field = {
           value: 'avuny',
         },
       ],
+      admin: {
+        hidden: !developer,
+      },
       required: true,
     },
     headlineField,
@@ -63,6 +67,7 @@ export const hero: Field = {
       type: 'upload',
       relationTo: 'media',
     },
+
     {
       name: 'BackgroundEffect',
       type: 'select',
@@ -94,7 +99,7 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact', 'avuny'].includes(type),
       },
       relationTo: 'media',
       required: true,

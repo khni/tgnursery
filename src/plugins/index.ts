@@ -15,6 +15,7 @@ import { getServerSideURL } from '@/utilities/getURL'
 
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
 import { cloudinaryAdapter, cloudinaryConfig } from '@/plugins/cloudinary'
+import { developer } from '@/access/developer'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
@@ -30,6 +31,15 @@ export const plugins: Plugin[] = [
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
+      access: {
+        create: developer,
+        delete: developer,
+        read: developer,
+        update: developer,
+      },
+      admin: {
+        hidden: !developer,
+      },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -58,10 +68,31 @@ export const plugins: Plugin[] = [
     generateURL,
   }),
   formBuilderPlugin({
+    formSubmissionOverrides: {
+      access: {
+        create: developer,
+        delete: developer,
+        read: developer,
+        update: developer,
+      },
+      admin: {
+        hidden: !developer,
+      },
+    },
+
     fields: {
       payment: false,
     },
     formOverrides: {
+      access: {
+        create: developer,
+        delete: developer,
+        read: developer,
+        update: developer,
+      },
+      admin: {
+        hidden: !developer,
+      },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
@@ -87,8 +118,18 @@ export const plugins: Plugin[] = [
     collections: ['posts'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      access: {
+        create: developer,
+        delete: developer,
+        read: developer,
+        update: developer,
+      },
+
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
+      },
+      admin: {
+        hidden: !developer,
       },
     },
   }),

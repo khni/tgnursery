@@ -1,3 +1,4 @@
+import { developer } from '@/access/developer'
 import { ctaField } from '@/avuny/cta/CtaField'
 import { headlineField } from '@/avuny/payload/fields/headline/HeadlineField'
 import { subHeadlineField } from '@/avuny/payload/fields/subheadline /SubHeadlineField'
@@ -25,9 +26,20 @@ export const ImageCard: Block = {
       name: 'slug',
       type: 'text',
       unique: true,
+
       admin: {
+        hidden: !developer,
         description: 'unique slug used for section id',
       },
+    },
+    {
+      name: 'showInNav',
+      type: 'checkbox',
+      admin: {
+        description: 'check it to be rendered in navbar',
+        hidden: !developer,
+      },
+      defaultValue: false,
     },
 
     {
@@ -52,6 +64,9 @@ export const ImageCard: Block = {
         },
       ],
       defaultValue: 'lens',
+      admin: {
+        hidden: !developer,
+      },
     },
     localizedTextField('headline'),
     localizedTextAreaField('subheadline'),

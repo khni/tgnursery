@@ -1,6 +1,7 @@
 import { slugField, type Block } from 'payload'
 import { CARD_COLORS, SPARKLE_COLORS, CARD_EMOJIS, CARD_VARIANTS, CARD_ALIGNMENTS } from './options'
 import { localizedTextAreaField, localizedTextField } from '@/avuny/payload/fields/textField'
+import { developer } from '@/access/developer'
 
 export const ColourfulCards: Block = {
   slug: 'colourfulCards',
@@ -13,6 +14,15 @@ export const ColourfulCards: Block = {
     localizedTextField('name'),
     slugField(),
     localizedTextField('headline'),
+    {
+      name: 'showInNav',
+      type: 'checkbox',
+      admin: {
+        description: 'check it to be rendered in navbar',
+        hidden: !developer,
+      },
+      defaultValue: false,
+    },
 
     {
       name: 'subheadline',
@@ -24,6 +34,9 @@ export const ColourfulCards: Block = {
       type: 'select',
       defaultValue: 'center',
       options: CARD_ALIGNMENTS,
+      admin: {
+        hidden: !developer,
+      },
     },
     {
       name: 'cards',

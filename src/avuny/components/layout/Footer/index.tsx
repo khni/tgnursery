@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { Facebook, Phone, MapPin } from 'lucide-react'
+import { Facebook, Phone, MapPin, Crown, Briefcase, Sparkles, ShieldCheck } from 'lucide-react'
 
 import { cn } from '@/utilities/ui'
 import { SocialLinks } from '@/avuny/components/layout/Footer/socials'
@@ -29,17 +29,26 @@ export default function Footer({ data, className }: FooterClientProps) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-3"
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="space-y-2"
           >
-            <h3 className="text-2xl font-bold text-sky-500 dark:text-sky-400">
-              {data.footer.headline}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <div className="flex items-center gap-1">
+              <span
+                className="flex h-9 w-9 items-center justify-center rounded-full
+      bg-sky-500/10 text-sky-500 dark:text-sky-400 dark:bg-sky-400/10"
+              >
+                <ShieldCheck className="h-5 w-5" />
+              </span>
+
+              <h1 className="text-2xl font-semibold tracking-tight text-sky-600 dark:text-sky-400">
+                {data.footer.headline}
+              </h1>
+            </div>
+
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
               {data.footer.subheadline}
             </p>
           </motion.div>
-
           {/* Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

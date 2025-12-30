@@ -1,3 +1,4 @@
+import { developer } from '@/access/developer'
 import { ctaField } from '@/avuny/cta/CtaField'
 import type { Block } from 'payload'
 
@@ -31,6 +32,15 @@ export const MediaGallery: Block = {
       admin: {
         description: 'unique slug used for section id',
       },
+    },
+    {
+      name: 'showInNav',
+      type: 'checkbox',
+      admin: {
+        description: 'check it to be rendered in navbar',
+        hidden: !developer,
+      },
+      defaultValue: false,
     },
     {
       name: 'variant',

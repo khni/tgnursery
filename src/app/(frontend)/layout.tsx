@@ -19,6 +19,7 @@ import MainLayout from '@/avuny/components/layout'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { navItems } from '@/avuny/features/navItems'
+import { buildNav } from '@/utilities/buildNav'
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
   const payload = await getPayload({ config })

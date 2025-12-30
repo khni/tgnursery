@@ -1,3 +1,4 @@
+import { developer } from '@/access/developer'
 import { colorsField } from '@/avuny/payload/fields/ColorField'
 import { headlineVariantField } from '@/avuny/payload/fields/headline/HeadlineVariantField'
 import { sizeField } from '@/avuny/payload/fields/Size'
@@ -15,6 +16,9 @@ export const headlineField: Field = {
       name: 'appearance',
       type: 'group',
       fields: [sizeField, colorsField],
+      admin: {
+        hidden: !developer,
+      },
     },
   ],
 }

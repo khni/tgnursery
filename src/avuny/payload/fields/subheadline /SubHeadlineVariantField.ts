@@ -1,3 +1,4 @@
+import { developer } from '@/access/developer'
 import {
   defaultSubHeadlineVariant,
   subheadlineVariantOptions,
@@ -9,4 +10,7 @@ export const subHeadlineVariantField: Field = {
   type: 'select',
   options: subheadlineVariantOptions,
   defaultValue: defaultSubHeadlineVariant,
+  admin: {
+    hidden: !developer,
+  },
 }

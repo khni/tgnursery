@@ -47,5 +47,9 @@ export const RenderHero: React.FC<Page['hero']> = (props) => {
 
   if (!HeroToRender) return null
 
-  return <HeroToRender {...props} />
+  return (
+    <section id="hero">
+      <HeroToRender {...props} />
+    </section>
+  )
 }
