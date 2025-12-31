@@ -18,7 +18,7 @@ import { cloudinaryAdapter, cloudinaryConfig } from '@/plugins/cloudinary'
 import { developer } from '@/access/developer'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title}` : 'TG Nursery | Mohandseen'
 }
 
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
