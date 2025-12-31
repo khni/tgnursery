@@ -67,14 +67,14 @@ export const metadata: Metadata = {
       'Enroll your child in Topo Gigio Nursery camps. Fun, learning, and creativity for every child in Mohandseen.',
     url: getServerSideURL(),
     type: 'website',
-    // images: [
-    //   {
-    //     url: `${getServerSideURL()}/og-image.jpg`,
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "TG Nursery "
-    //   }
-    // ],
+    images: [
+      {
+        url: '/opengraph-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'TG Nursery ',
+      },
+    ],
   },
   // twitter: {
   //   card: 'summary_large_image',
